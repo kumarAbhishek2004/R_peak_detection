@@ -1,0 +1,14 @@
+    X_train, y_train,
+    validation_split=0.2,
+    epochs=50,
+    batch_size=64,
+    callbacks=[early_stop, reduce_lr],
+    verbose=1
+)
+
+# Evaluate
+unet_results = unet_model.evaluate(X_test, y_test, verbose=0)
+print(f"\n✓ U-Net Model Performance:")
+print(f"  Test Accuracy: {unet_results[1]*100:.2f}%")
+print(f"  Test Precision: {unet_results[2]*100:.2f}%")
+print(f"  Test Recall: {unet_results[3]*100:.2f}%")
